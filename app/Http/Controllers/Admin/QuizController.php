@@ -39,7 +39,10 @@ class QuizController extends Controller
      */
     public function store(QuizCreateRequest $request)
     {
-        return $request->post();
+        Quiz::create($request->post());
+
+        return redirect()->route('quizzes.index')->withSuccess('Quiz Başarıyla Oluşturuldu.');
+
     }
 
     /**
