@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Quiz;
 
 class QuestionController extends Controller
 {
@@ -14,7 +15,8 @@ class QuestionController extends Controller
      */
     public function index($quiz_id)
     {
-        return $quiz_id;
+        $quiz = Quiz::whereId($quiz_id)->with('questions')->first() ?? abort(404, 'Quiz bulunamadı');
+        return view('admin.question.list', compact('quiz'));
     }
 
     /**
@@ -22,9 +24,9 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($quiz_id)
     {
-        return 'create sayfası';
+        return $quiz_id;
     }
 
     /**
