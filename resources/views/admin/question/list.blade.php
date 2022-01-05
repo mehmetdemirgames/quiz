@@ -41,7 +41,7 @@
                             <a href="{{ route('questions.edit', [$quiz->id, $question->id]) }}"
                                 class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
 
-                            <form action="" method="POST">
+                            <form action="{{ route('questions.destroy', [$quiz->id, $question->id]) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
