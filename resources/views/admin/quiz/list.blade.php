@@ -17,18 +17,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($quizzes as $quiz)
+                    @foreach($quizzes as $quiz)
                     <tr>
                         <td>{{$quiz->title}}</td>
                         <td class="">{{$quiz->status}}</td>
                         <td>{{$quiz->finished_at}}</td>
                         <td>
-                            <a href="{{route('quizzes.edit', $quiz->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                            <a href="" class="btn btn-danger"><i class="fa fa-trash"></i>
-                            </a>
+                            <a href="{{route('quizzes.edit', $quiz->id)}}" class="btn btn-sm btn-primary"><i
+                                    class="fa fa-edit"></i></a>
+
+                            <form action="{{route('quizzes.destroy', $quiz->id)}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                            </form>
+
                         </td>
                     </tr>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
             {{$quizzes->links()}}
