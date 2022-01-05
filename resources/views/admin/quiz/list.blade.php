@@ -12,6 +12,7 @@
                     <tr>
                         <th scope="col">Quiz Adı</th>
                         <th scope="col">Durumu</th>
+                        <th scope="col">Soru Sayısı</th>
                         <th scope="col">Bitiş Tarihi</th>
                         <th scope="col">İşlemler</th>
                     </tr>
@@ -20,8 +21,22 @@
                     @foreach($quizzes as $quiz)
                     <tr>
                         <td>{{$quiz->title}}</td>
-                        <td class="">{{$quiz->status}}</td>
-                        <td>{{$quiz->finished_at}}</td>
+                        <td>
+                            @switch($quiz->status)
+                                @case('publish')
+                                <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-green-900 rounded-full">Aktif</span>
+                                @break
+                                @case('draft')
+                                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-black bg-amber-400 rounded-full">Taslak</span>
+                                @break
+                                @case('passive')
+                                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">Pasif</span>
+                                @break
+                            @endswitch
+
+                        </td>
+                        <td> {{$quiz->questions_count}} </td>
+                        <td>{{ $quiz->finished_at ? $quiz->finished_at->diffForHumans() : 'no'}}</td>
                         <td>
                             <a href="{{route('questions.index', $quiz->id)}}" class="btn btn-sm btn-warning"><i
                                     class="fa fa-question"></i></a>
