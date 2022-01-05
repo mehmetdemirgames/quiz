@@ -26,7 +26,7 @@
                     @foreach($quiz->questions as $question)
                     <tr>
                         <td>{{$question->question}}</td>
-                        <td>{{ $question->image }}</td>
+                        <td><a href="{{ $question->image }}">Görüntüle</a></td>
                         <td>{{$question->answer1}}</td>
                         <td>{{$question->answer2}}</td>
                         <td>{{$question->answer3}}</td>
