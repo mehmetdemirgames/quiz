@@ -1,11 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        {{$quiz->title}} 'a ait sorular 
+        {{$quiz->title}} 'a ait sorular
     </x-slot>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">
-                <a href="{{ route('questions.create', $quiz->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>
+                <a href="{{ route('questions.create', $quiz->id) }}" class="btn btn-sm btn-primary"><i
+                        class="fa fa-plus"></i>
                     Soru Oluştur
                 </a>
             </h5>
@@ -26,15 +27,19 @@
                     @foreach($quiz->questions as $question)
                     <tr>
                         <td>{{$question->question}}</td>
-                        <td><a href="{{ $question->image }}">Görüntüle</a></td>
+                        <td>
+                            @if ($question->image)
+                                <a class="btn btn-secondary w-14" href="{{ asset($question->image) }}" target="_blank">Görüntüle</a>
+                            @endif
+                        </td>
                         <td>{{$question->answer1}}</td>
                         <td>{{$question->answer2}}</td>
                         <td>{{$question->answer3}}</td>
                         <td>{{$question->answer4}}</td>
-                        <td>{{substr($question->correct_answer, -1)}}.Cevap</td>
+                        <td class="text-green-900">{{substr($question->correct_answer, -1)}}.Cevap</td>
                         <td>
-                            <a href="" class="btn btn-sm btn-primary"><i
-                                    class="fa fa-edit"></i></a>
+                            <a href="{{ route('questions.edit', [$quiz->id, $question->id]) }}"
+                                class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
 
                             <form action="" method="POST">
                                 @csrf
