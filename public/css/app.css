@@ -944,6 +944,9 @@ select{
 .-mt-px{
   margin-top: -1px;
 }
+.mb-1{
+  margin-bottom: 0.25rem;
+}
 .mb-8{
   margin-bottom: 2rem;
 }
@@ -1302,8 +1305,16 @@ select{
   --tw-bg-opacity: 1;
   background-color: rgb(251 191 36 / var(--tw-bg-opacity));
 }
+.bg-blue-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
 .bg-transparent{
   background-color: transparent;
+}
+.bg-orange-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
 }
 .bg-opacity-25{
   --tw-bg-opacity: 0.25;
