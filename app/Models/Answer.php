@@ -11,4 +11,5 @@ class Answer extends Model
 
     public $timestamps = false; 
 
+    protected $fillable = ['answer', 'user_id', 'question_id'];
 }
