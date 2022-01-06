@@ -24,6 +24,10 @@ class MainController extends Controller
         return view('quiz', compact('quiz'));
     }
 
+    public function result(Request $request, $slug)
+    {
+        return $request->post();
+    }
 
 
 }
