@@ -74,10 +74,10 @@
                             <a href="{{route('quizzes.edit', $quiz->id)}}" class="btn btn-sm btn-primary"><i
                                     class="fa fa-edit"></i></a>
 
-                            <form action="{{route('quizzes.destroy', $quiz->id)}}" method="POST">
+                            <form action="{{route('quizzes.destroy', $quiz->id)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                             </form>
 
                         </td>

@@ -19,6 +19,7 @@ class QuestionController extends Controller
     public function index($quiz_id)
     {
         $quiz = Quiz::whereId($quiz_id)->with('questions')->first() ?? abort(404, 'Quiz bulunamadı');
+        $quiz->setRelation('questions', $quiz->questions()->paginate(5)); // https://stackoverflow.com/questions/33507581/how-to-paginate-a-has-many-relationship-that-is-ordered
         return view('admin.question.list', compact('quiz'));
     }
 
